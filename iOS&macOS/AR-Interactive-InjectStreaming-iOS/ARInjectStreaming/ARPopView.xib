@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="FcI-bY-mp3" customClass="ARPopView" customModule="ARInjectStreaming" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wgb-qC-Whj">
+                    <rect key="frame" x="41.5" y="380.5" width="331" height="1"/>
+                    <color key="backgroundColor" red="0.34509803919999998" green="0.36470588240000001" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="CVw-qZ-rB1"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4il-bS-fMo">
+                    <rect key="frame" x="41.5" y="426" width="331" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="sDL-nr-pg7"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                    <state key="normal">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="doPopViewButtonPressed:" destination="FcI-bY-mp3" eventType="touchUpInside" id="jEl-Z4-o26"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vi9-CC-Mjk">
+                    <rect key="frame" x="364" y="20" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="dcs-Af-S4f"/>
+                        <constraint firstAttribute="height" constant="50" id="rZw-Kd-PMa"/>
+                    </constraints>
+                    <state key="normal" image="btn_close"/>
+                    <connections>
+                        <action selector="doCancelButton:" destination="FcI-bY-mp3" eventType="touchUpInside" id="7i2-Nd-eJY"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="rtmp://58.200.131.2:1935/livetv/ahtv" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kgf-wl-tYP">
+                    <rect key="frame" x="46.5" y="340.5" width="321" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="5rA-PI-j1u"/>
+                    </constraints>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet"/>
+                </textField>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="lc6-iq-clw"/>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="displayP3"/>
+            <constraints>
+                <constraint firstItem="4il-bS-fMo" firstAttribute="centerX" secondItem="FcI-bY-mp3" secondAttribute="centerX" id="7gk-SY-Dqz"/>
+                <constraint firstItem="wgb-qC-Whj" firstAttribute="centerX" secondItem="FcI-bY-mp3" secondAttribute="centerX" id="8dm-39-fbg"/>
+                <constraint firstItem="wgb-qC-Whj" firstAttribute="centerY" secondItem="FcI-bY-mp3" secondAttribute="centerY" multiplier="0.85" id="Kee-Ej-vJ4"/>
+                <constraint firstItem="Kgf-wl-tYP" firstAttribute="centerX" secondItem="FcI-bY-mp3" secondAttribute="centerX" id="TgL-00-378"/>
+                <constraint firstItem="4il-bS-fMo" firstAttribute="width" secondItem="wgb-qC-Whj" secondAttribute="width" id="U92-fe-7GA"/>
+                <constraint firstItem="4il-bS-fMo" firstAttribute="centerY" secondItem="FcI-bY-mp3" secondAttribute="centerY" id="ZHh-Q1-p85"/>
+                <constraint firstItem="Kgf-wl-tYP" firstAttribute="width" secondItem="wgb-qC-Whj" secondAttribute="width" constant="-10" id="agT-9A-P28"/>
+                <constraint firstAttribute="trailing" secondItem="vi9-CC-Mjk" secondAttribute="trailing" id="ke5-u7-uEA"/>
+                <constraint firstItem="wgb-qC-Whj" firstAttribute="top" secondItem="Kgf-wl-tYP" secondAttribute="bottom" id="m1t-PE-aoC"/>
+                <constraint firstItem="vi9-CC-Mjk" firstAttribute="top" secondItem="FcI-bY-mp3" secondAttribute="top" constant="20" id="ngb-Uq-USK"/>
+                <constraint firstItem="wgb-qC-Whj" firstAttribute="width" secondItem="FcI-bY-mp3" secondAttribute="width" multiplier="0.8" id="ymv-LW-ISZ"/>
+            </constraints>
+            <connections>
+                <outlet property="inputTextField" destination="Kgf-wl-tYP" id="5ev-rG-Win"/>
+                <outlet property="popViewButton" destination="4il-bS-fMo" id="eH1-fW-syt"/>
+            </connections>
+            <point key="canvasLocation" x="-161" y="115"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn_close" width="30" height="30"/>
+    </resources>
+</document>

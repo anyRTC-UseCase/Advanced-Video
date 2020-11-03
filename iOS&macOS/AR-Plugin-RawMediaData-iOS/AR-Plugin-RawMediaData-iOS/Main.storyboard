@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WBI-uv-AIa">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="SWe-o4-xYh">
+            <objects>
+                <navigationController id="WBI-uv-AIa" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="M9R-ZG-rcb">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="O0d-ef-mTa" kind="relationship" relationship="rootViewController" id="EyT-3h-zAa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fyg-xV-zzD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-443" y="1935"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="x72-3b-GCg">
+            <objects>
+                <viewController id="O0d-ef-mTa" customClass="ViewController" customModule="AR_Plugin_RawMediaData_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iRI-aA-06F">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UzG-zY-iSA">
+                                <rect key="frame" x="20" y="311" width="374" height="138"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter channel name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GWc-L5-fZV" userLabel="channelName">
+                                        <rect key="frame" x="37.5" y="20" width="299" height="34"/>
+                                        <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kbN-ZR-nNn" userLabel="joinBtn">
+                                        <rect key="frame" x="172" y="74" width="30" height="30"/>
+                                        <state key="normal" title="Join"/>
+                                        <connections>
+                                            <segue destination="cAG-6V-STC" kind="show" identifier="RawMediaDataIdentifier" id="gWd-rw-LLz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="kbN-ZR-nNn" firstAttribute="centerX" secondItem="GWc-L5-fZV" secondAttribute="centerX" id="B5x-LS-GFH"/>
+                                    <constraint firstItem="kbN-ZR-nNn" firstAttribute="top" secondItem="GWc-L5-fZV" secondAttribute="bottom" constant="20" id="LVQ-Cs-yOU"/>
+                                    <constraint firstAttribute="bottom" secondItem="kbN-ZR-nNn" secondAttribute="bottom" constant="34" id="bpT-UB-uOu"/>
+                                    <constraint firstItem="GWc-L5-fZV" firstAttribute="centerX" secondItem="UzG-zY-iSA" secondAttribute="centerX" id="c3d-A4-ROC"/>
+                                    <constraint firstItem="GWc-L5-fZV" firstAttribute="width" secondItem="UzG-zY-iSA" secondAttribute="width" multiplier="0.8" id="dMl-kx-Ow8"/>
+                                    <constraint firstItem="GWc-L5-fZV" firstAttribute="top" secondItem="UzG-zY-iSA" secondAttribute="top" constant="20" id="jIK-tU-lkF"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome RawMediaData Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bhj-cf-T3c">
+                                <rect key="frame" x="74.5" y="240" width="265" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="265" id="LSc-GG-Jkb"/>
+                                    <constraint firstAttribute="height" constant="21" id="T2j-Tp-mOC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wDs-Gr-g1S"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="UzG-zY-iSA" firstAttribute="top" secondItem="Bhj-cf-T3c" secondAttribute="bottom" constant="50" id="1Qh-5h-0vp"/>
+                            <constraint firstItem="Bhj-cf-T3c" firstAttribute="centerX" secondItem="iRI-aA-06F" secondAttribute="centerX" id="7g8-ut-3De"/>
+                            <constraint firstItem="UzG-zY-iSA" firstAttribute="centerY" secondItem="wDs-Gr-g1S" secondAttribute="centerY" multiplier="0.8" id="8bT-wH-NDK"/>
+                            <constraint firstItem="UzG-zY-iSA" firstAttribute="leading" secondItem="wDs-Gr-g1S" secondAttribute="leading" constant="20" id="BQh-SU-OA6"/>
+                            <constraint firstItem="wDs-Gr-g1S" firstAttribute="trailing" secondItem="UzG-zY-iSA" secondAttribute="trailing" constant="20" id="gHu-5I-6Gb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="OSC-tf-fdy"/>
+                    <connections>
+                        <outlet property="channelTextField" destination="GWc-L5-fZV" id="xDy-ai-JdS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DXe-2A-qSu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="384" y="1936"/>
+        </scene>
+        <!--RawMediaData-->
+        <scene sceneID="n6Z-zi-1mc">
+            <objects>
+                <viewController title="Join Channel Video" id="cAG-6V-STC" userLabel="RawMediaData" customClass="RawMediaDataMain" customModule="AR_Plugin_RawMediaData_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BG2-O2-e69">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mgo-dc-iwm">
+                                <rect key="frame" x="0.0" y="88" width="414" height="233"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="2Ff-PF-waY">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="233"/>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="2Ff-PF-waY" secondAttribute="trailing" id="2j5-le-CaO"/>
+                                    <constraint firstItem="2Ff-PF-waY" firstAttribute="top" secondItem="Mgo-dc-iwm" secondAttribute="top" id="4E3-s3-7Aj"/>
+                                    <constraint firstAttribute="bottom" secondItem="2Ff-PF-waY" secondAttribute="bottom" id="Vc1-f2-242"/>
+                                    <constraint firstItem="2Ff-PF-waY" firstAttribute="leading" secondItem="Mgo-dc-iwm" secondAttribute="leading" id="lTe-aL-x1u"/>
+                                    <constraint firstAttribute="width" secondItem="Mgo-dc-iwm" secondAttribute="height" multiplier="16:9" id="nOl-DR-ZRh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="q2t-Lo-xxs"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Mgo-dc-iwm" firstAttribute="top" secondItem="q2t-Lo-xxs" secondAttribute="top" id="SAh-ye-hZF"/>
+                            <constraint firstItem="q2t-Lo-xxs" firstAttribute="trailing" secondItem="Mgo-dc-iwm" secondAttribute="trailing" id="dKV-um-165"/>
+                            <constraint firstItem="Mgo-dc-iwm" firstAttribute="leading" secondItem="q2t-Lo-xxs" secondAttribute="leading" id="eH1-D3-6H2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="qhE-4k-WF0"/>
+                    <connections>
+                        <outlet property="container" destination="2Ff-PF-waY" id="LTn-IB-imn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cQE-Vi-vpQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1157" y="1936"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
