@@ -629,26 +629,26 @@ typedef NS_ENUM(NSInteger, ARAudioProfile) {
 /** 设置音频应用场景 */
 typedef NS_ENUM(NSInteger, ARAudioScenario) {
     /**
-     0: 默认设置 */
+     0: 默认的音频应用场景。 */
     ARAudioScenarioDefault = 0,
     /**
      1: 娱乐应用，需要频繁上下麦的场景
      */
     ARAudioScenarioChatRoomEntertainment = 1,
     /**
-     2: 教育应用，流畅度和稳定性优先
+     2: 教育场景，适用于需要高流畅度和稳定性的场景。
      */
     ARAudioScenarioEducation = 2,
     /**
-     3: 游戏直播应用，需要外放游戏音效也直播出去的场景
+     3: 高音质语聊房场景，适用于音乐为主的场景。
      */
     ARAudioScenarioGameStreaming = 3,
     /**
-     4: 秀场应用，音质优先和更好的专业外设支持
+     4: 秀场场景，适用于需要高音质的单主播场景。
      */
     ARAudioScenarioShowRoom = 4,
     /**
-     5: 游戏开黑
+     5: 游戏开黑场景，适用于只有人声的场景。
      */
     ARAudioScenarioChatRoomGaming = 5
 };
@@ -1136,7 +1136,7 @@ typedef NS_ENUM(NSInteger, ARStreamFallbackOptions ) {
      */
     ARStreamFallbackOptionDisabled = 0,
     /**
-     1:在下行网络条件较差的情况下，SDK 将接收视频小流（低分辨率、低码率视频s流）。此选项仅适用于 setRemoteSubscribeFallbackOption。
+     1:在下行网络条件较差的情况下，SDK 将接收视频小流（低分辨率、低码率视频流）。此选项仅适用于 setRemoteSubscribeFallbackOption。
      */
     ARStreamFallbackOptionVideoStreamLow = 1,
     /**
@@ -1243,7 +1243,547 @@ typedef NS_ENUM(NSInteger, ARAudioType) {
      2:音频由麦克风产生
      */
     ARAudioTypeMic = 2,
-};;
+};
 
+/** 录音音质 */
+typedef NS_ENUM(NSInteger, ARAudioRecordingQuality) {
+    /**
+     低音质。采样率为 32 KHz，录制 10 分钟的文件大小为 1.2 M 左右
+     */
+    ARAudioRecordingQualityLow = 0,
+    /**
+     中音质。采样率为 32 KHz，录制 10 分钟的文件大小为 2 M 左右
+     */
+    ARAudioRecordingQualityMedium = 1,
+    /**
+     高音质。采样率为 32 KHz，录制 10 分钟的文件大小为 3.75 M 左右
+     */
+    ARAudioRecordingQualityHigh = 2
+};
+
+/** 音频的采样率 */
+typedef NS_ENUM(NSInteger, ARAudioSampleRateType) {
+    /** 32 kHz. */
+    ARAudioSampleRateType32000 = 32000,
+    /** 44.1 kHz. */
+    ARAudioSampleRateType44100 = 44100,
+    /** 48 kHz. */
+    ARAudioSampleRateType48000 = 48000,
+};
+
+/** 导入的外部视频源状态 */
+typedef NS_ENUM(NSUInteger, ARInjectStreamStatus) {
+    /** 外部视频流导入成功 */
+    ARInjectStreamStatusStartSuccess = 0,
+    /** 外部视频流已存在 */
+    ARInjectStreamStatusStartAlreadyExists = 1,
+    /** 外部视频流导入未经授权 */
+    ARInjectStreamStatusStartUnauthorized = 2,
+    /** 导入外部视频流超时 */
+    ARInjectStreamStatusStartTimedout = 3,
+    /** 外部视频流导入失败*/
+    ARInjectStreamStatusStartFailed = 4,
+    /** 外部视频流停止导入成功 */
+    ARInjectStreamStatusStopSuccess = 5,
+    /** 未找到要停止导入的外部视频流 */
+    ARInjectStreamStatusStopNotFound = 6,
+    /** 要停止导入的外部视频流未经授权*/
+    ARInjectStreamStatusStopUnauthorized = 7,
+    /** 停止导入外部视频流超时 */
+    ARInjectStreamStatusStopTimedout = 8,
+    /** 停止导入外部视频流失败 */
+    ARInjectStreamStatusStopFailed = 9,
+    /** 导入的外部视频流被中断*/
+    ARInjectStreamStatusBroken = 10,
+};
+
+/** 跨频道媒体流转发状态码
+ */
+typedef NS_ENUM(NSInteger, ARChannelMediaRelayState) {
+    /** 0: SDK 正在初始化。
+     */
+    ARChannelMediaRelayStateIdle = 0,
+    /** 1: SDK 尝试跨频道。
+     */
+    ARChannelMediaRelayStateConnecting = 1,
+    /** 2: 源频道主播成功加入目标频道。
+     */
+    ARChannelMediaRelayStateRunning = 2,
+    /** 3: 发生异常，详见 error 中提示的错误信息。
+     */
+    ARChannelMediaRelayStateFailure = 3,
+};
+
+/** 跨频道媒体流转发事件码
+ */
+typedef NS_ENUM(NSInteger, ARChannelMediaRelayEvent) {
+    /** 0: 网络中断导致用户与服务器连接断开。
+     */
+    ARChannelMediaRelayEventDisconnect = 0,
+    /** 1: 用户与服务器建立连接。
+     */
+    ARChannelMediaRelayEventConnected = 1,
+    /** 2: 用户已加入源频道。
+     */
+    ARChannelMediaRelayEventJoinedSourceChannel = 2,
+    /** 3: 用户已加入目标频道。
+     */
+    ARChannelMediaRelayEventJoinedDestinationChannel = 3,
+    /** 4: SDK 开始向目标频道发送数据包。
+     */
+    ARChannelMediaRelayEventSentToDestinationChannel = 4,
+    /** 5: 服务器收到了目标频道发送的视频流。
+     */
+    ARChannelMediaRelayEventReceivedVideoPacketFromSource = 5,
+    /** 6: 服务器收到了目标频道发送的音频流。
+     */
+    ARChannelMediaRelayEventReceivedAudioPacketFromSource = 6,
+    /** 7: 目标频道已更新。
+     */
+    ARChannelMediaRelayEventUpdateDestinationChannel = 7,
+    /** 8: 内部原因导致目标频道更新失败。
+     */
+    ARChannelMediaRelayEventUpdateDestinationChannelRefused = 8,
+    /** 9: 目标频道未发生改变，即目标频道更新失败。
+     */
+    ARChannelMediaRelayEventUpdateDestinationChannelNotChange = 9,
+    /** 10: 目标频道名为 NULL。
+     */
+    ARChannelMediaRelayEventUpdateDestinationChannelIsNil = 10,
+    /** 11: 视频属性已发送至服务器。
+     */
+    ARChannelMediaRelayEventVideoProfileUpdate = 11,
+};
+
+/** 跨频道媒体流转发出错的错误码
+ */
+typedef NS_ENUM(NSInteger, ARChannelMediaRelayError) {
+    /** 0: 一切正常。
+     */
+    ARChannelMediaRelayErrorNone = 0,
+    /** 1: 服务器回应出错。
+     */
+    ARChannelMediaRelayErrorServerErrorResponse = 1,
+    /** 2: 服务器无回应。你可以调用 leaveChannel 方法离开频道。
+     */
+    ARChannelMediaRelayErrorServerNoResponse = 2,
+    /** 3: SDK 无法获取服务，可能是因为服务器资源有限导致。
+     */
+    ARChannelMediaRelayErrorNoResourceAvailable = 3,
+    /** 4: 发起跨频道转发媒体流请求失败。
+     */
+    ARChannelMediaRelayErrorFailedJoinSourceChannel = 4,
+    /** 5: 接受跨频道转发媒体流请求失败。
+     */
+    ARChannelMediaRelayErrorFailedJoinDestinationChannel = 5,
+    /** 6: 服务器接收跨频道转发媒体流失败。
+     */
+    ARChannelMediaRelayErrorFailedPacketReceivedFromSource = 6,
+    /** 7: 服务器发送跨频道转发媒体流失败。
+     */
+    ARChannelMediaRelayErrorFailedPacketSentToDestination = 7,
+    /** 8: SDK 因网络质量不佳与服务器断开。你可以调用 leaveChannel 方法离开当前频道。
+     */
+    ARChannelMediaRelayErrorServerConnectionLost = 8,
+    /** 9: 服务器内部出错。
+     */
+    ARChannelMediaRelayErrorInternalError = 9,
+    /** 10: 源频道的 Token 已过期。
+     */
+    ARChannelMediaRelayErrorSourceTokenExpired = 10,
+    /** 11: 目标频道的 Token 已过期。
+     */
+    ARChannelMediaRelayErrorDestinationTokenExpired = 11,
+};
+
+/** 发布状态 */
+typedef NS_ENUM(NSUInteger, ARStreamPublishState) {
+    /** 0: 加入频道后的初始发布状态。
+     */
+    ARStreamPublishIdle = 0,
+    /** 1: 发布失败。可能是因为：
+     - 本地用户调用 muteLocalAudioStream(YES) 或 muteLocalVideoStream(YES) 停止发送本地媒体流。
+     - 本地用户调用 disableAudio 或 disableVideo 关闭本地音频或视频模块。
+     - 本地用户调用 enableLocalAudio(NO) 或 enableLocalVideo(NO) 关闭本地音频或视频采集。
+     - 本地用户角色为观众。
+     */
+    ARStreamPublishNoPublished = 1,
+    /** 2: 正在发布。
+     */
+    ARStreamPublishPublishing = 2,
+    /** 3: 发布成功。
+     */
+    ARStreamPublishPublished = 3,
+};
+
+/** 订阅状态。 */
+typedef NS_ENUM(NSUInteger, ARStreamSubscribeState) {
+    /** 0: 加入频道后的初始订阅状态。
+     */
+    ARStreamSubscribeIdle = 0,
+    /** 1: 订阅失败。可能是因为：
+     
+     - 远端用户：
+        - 调用 muteLocalAudioStream(YES) 或 muteLocalVideoStream(YES) 停止发送本地媒体流。
+        - 调用 disableAudio 或 disableVideo 关闭本地音频或视频模块。
+        - 调用 enableLocalAudio(NO) 或 enableLocalVideo(NO) 关闭本地音频或视频采集。
+     - 用户角色为观众。
+     - 本地用户调用以下方法停止接收远端媒体流：
+        - 调用 muteRemoteAudioStream(YES)、muteAllRemoteAudioStreams(YES) 或 setDefaultMuteAllRemoteAudioStreams(YES) 停止接收远端音频流。
+        - 调用 muteRemoteVideoStream(YES)、muteAllRemoteVideoStreams(YES) 或 setDefaultMuteAllRemoteVideoStreams(YES) 停止接收远端视频流。
+     */
+    ARStreamSubscribeNoSubscribed = 1,
+    /** 2: 正在订阅。
+     */
+    ARStreamSubscribeSubscribing = 2,
+    /** 3: 收到了远端流，订阅成功。
+     */
+    ARStreamSubscribeSubscribed = 3,
+};
+
+/** 用于旁路直播的输出视频的编解码规格 */
+typedef NS_ENUM(NSInteger, ARVideoCodecProfileType) {
+    /** 66：Baseline 级别的视频编码规格，一般用于低阶或需要额外容错的应用，比如视频通话、手机视频等。 */
+    ARVideoCodecProfileTypeBaseLine = 66,
+    /** 77：Main 级别的视频编码规格，一般用于主流消费类电子产品，如 mp4、便携的视频播放器、PSP 和 iPad 等。 */
+    ARVideoCodecProfileTypeMain = 77,
+    /** 100：（默认）High 级别的视频编码规格，一般用于广播及视频碟片存储，高清电视。 */
+    ARVideoCodecProfileTypeHigh = 100
+};
+
+/** 音频编码规格 */
+typedef NS_ENUM(NSInteger, ARAudioCodecProfileType) {
+    /** 0: (默认) LC-AAC 规格，表示基本音频编码规格。 */
+    ARAudioCodecProfileLCAAC = 0,
+    /** 1: HE-AAC 规格，表示高效音频编码规格。 */
+    ARAudioCodecProfileHEAAC = 1
+};
+
+/** 推流错误信息 */
+typedef NS_ENUM(NSUInteger, ARtmpStreamingErrorCode) {
+    /** 推流成功 */
+    ARtmpStreamingErrorCodeOK = 0,
+    /** 参数无效。请检查输入参数是否正确。例如如果你在调用 addPublishStreamUrl 前没有调用 setLiveTranscoding 设置转码参数，SDK 会返回该错误。 */
+    ARtmpStreamingErrorCodeInvalidParameters = 1,
+    /** 推流已加密，不能推流。*/
+    ARtmpStreamingErrorCodeEncryptedStreamNotAllowed = 2,
+    /** 推流超时未成功。可调用 addPublishStreamUrl 重新推流。 */
+    ARtmpStreamingErrorCodeConnectionTimeout = 3,
+    /** 推流服务器出现错误。请调用 addPublishStreamUrl 重新推流。 */
+    ARtmpStreamingErrorCodeInternalServerError = 4,
+    /** RTMP 服务器出现错误。 */
+    ARtmpStreamingErrorCodeRtmpServerError = 5,
+    /** 推流请求过于频繁。*/
+    ARtmpStreamingErrorCodeTooOften = 6,
+    /** 单个主播的推流地址数目达到上线 10。请删掉一些不用的推流地址再增加推流地址。*/
+    ARtmpStreamingErrorCodeReachLimit = 7,
+    /** 主播操作不属于自己的流。例如更新其他主播的流参数、停止其他主播的流。请检查 App 逻辑。*/
+    ARtmpStreamingErrorCodeNotAuthorized = 8,
+    /** 服务器未找到这个流。 */
+    ARtmpStreamingErrorCodeStreamNotFound = 9,
+    /** 推流地址格式有错误。请检查推流地址格式是否正确。*/
+    ARtmpStreamingErrorCodeFormatNotSupported = 10,
+};
+
+/** RTMP 推流时发生的事件。*/
+typedef NS_ENUM(NSUInteger, ARtmpStreamingEvent) {
+    /** RTMP 推流时，添加背景图或水印出错。*/
+    ARtmpStreamingEventFailedLoadImage = 1,
+};
+
+/** 推流状态 */
+typedef NS_ENUM(NSUInteger, ARtmpStreamingState) {
+    /** 推流未开始或已结束。成功调用 removePublishStreamUrl 方法删除推流地址后，也会返回该状态。*/
+    ARtmpStreamingStateIdle = 0,
+    /** 正在连接推流服务器和 RTMP 服务器。调用 addPublishStreamUrl 方法后，会返回该状态。 */
+    ARtmpStreamingStateConnecting = 1,
+    /** 推流正在进行。成功推流后，会返回该状态*/
+    ARtmpStreamingStateRunning = 2,
+    /** 正在恢复推流。当 CDN 出现异常，或推流短暂中断时，SDK 会自动尝试恢复推流，并返回该状态。
+   
+     - 如成功恢复推流，则进入状态 ARtmpStreamingStateRunning(2)。
+     如服务器出错或 60 秒内未成功恢复，则进入状态 ARtmpStreamingStateFailure(4)。如果觉得 60 秒太长，也可以主动调用 removePublishStreamUrl 和 addPublishStreamUrl 方法尝试重连。
+     */
+    ARtmpStreamingStateRecovering = 3,
+    /** 推流失败。失败后，你可以通过返回的错误码排查错误原因，也可以再次调用 addPublishStreamUrl 重新尝试推流。 */
+    ARtmpStreamingStateFailure = 4,
+};
+
+/** Last mile 质量探测结果的状态 */
+typedef NS_ENUM(NSUInteger, ARLastmileProbeResultState) {
+    /** 1: 表示本次 last mile 质量探测的结果是完整的 */
+    ARLastmileProbeResultComplete = 1,
+    /** 2: 表示本次 last mile 质量探测未进行带宽预测，因此结果不完整。一个可能的原因是测试资源暂时受限。*/
+    ARLastmileProbeResultIncompleteNoBwe = 2,
+    /** 3: 未进行 last mile 质量探测。一个可能的原因是网络连接中断。 */
+    ARLastmileProbeResultUnavailable = 3,
+};
+
+/** 屏幕共享的内容类型 */
+typedef NS_ENUM(NSUInteger, ARVideoContentHint) {
+    /** 0:（默认）无指定的内容类型 */
+    ARVideoContentHintNone = 0,
+    /** 1: 内容类型为动画。当共享的内容是视频、电影或视频游戏时，推荐选择该内容类型。 */
+    ARVideoContentHintMotion = 1,
+    /** 2: 内容类型为细节。当共享的内容是图片或文字时，推荐选择该内容类型。 */
+    ARVideoContentHintDetails = 2,
+};
+
+/** 媒体设备类型. */
+typedef NS_ENUM(NSInteger, ARMediaDeviceType) {
+    /** 未知设备 */
+    ARMediaDeviceTypeAudioUnknown = -1,
+    /** 音频播放设备 */
+    ARMediaDeviceTypeAudioPlayout = 0,
+    /** 音频采集设备 */
+    ARMediaDeviceTypeAudioRecording = 1,
+    /** 视频渲染设备 */
+    ARMediaDeviceTypeVideoRender = 2,
+    /** 视频采集设备 */
+    ARMediaDeviceTypeVideoCapture = 3,
+};
+
+/**
+推流模式。
+ */
+typedef NS_ENUM(NSInteger, ARStreamPushMode) {
+    /**
+     0: 音频
+     */
+    ARStreamPushModeAudMix = 0,
+    /**
+     1: 视频。
+     */
+    ARStreamPushModeVidMix = 1
+};
+
+/**
+推流状态。
+ */
+typedef NS_ENUM(NSInteger, ARStreamPushState) {
+    /**
+     0: 连建立网络连接中
+     */
+    ARStreamPushStateConnecting = 0,
+    /**
+     1: 连接失败
+     */
+    ARStreamPushStateLostConnection = 1,
+    /**
+     1: 重连中。
+     */
+    ARStreamPushStateReConnecting = 2,
+    /**
+     1: 连接失败。
+     */
+    ARStreamPushStateFailed = 3
+};
+
+/**
+推流原因。
+ */
+typedef NS_ENUM(NSInteger, ARStreamPushReason) {
+    /**
+     0: 推流正常
+     */
+    ARStreamPushReasonOK = 0,
+    /**
+     1: 网络原因。
+     */
+    ARStreamPushReasonNetwork = 1,
+    /**
+     2: 推流超时
+     */
+    ARStreamPushReasonTimeout = 2,
+    /**
+     3: 推流身份
+     */
+    ARStreamPushReasonAuth = 3
+};
+
+/**
+用于直播推流的输出视频的编码规格
+ */
+typedef NS_ENUM(NSInteger, ARStreamVideoCodeProfileType) {
+    /**
+     66: Baseline 级别的视频编码规格，一般用于低阶或需要额外容错的应用，比如视频通话、手机视频等。
+     */
+    ARStreamVideoCodeProfileTypeBaseline = 66,
+    /**
+     77: Main 级别的视频编码规格，一般用于主流消费类电子产品，如 mp4、便携的视频播放器、PSP 和 iPad 等
+     */
+    ARStreamVideoCodeProfileTypeMain = 77,
+    /**
+     100（默认）: High 级别的视频编码规格，一般用于广播及视频碟片存储，高清电视。
+     */
+    ARStreamVideoCodeProfileTypehigh = 100
+};
+
+/**
+音频的采样率
+ */
+typedef NS_ENUM(NSInteger, ARStreamAudioSampleRateType) {
+    /**
+     32 kHz
+     */
+    ARStreamAudioSampleRateType32000 = 32000,
+    /**
+     44.1 kHz
+     */
+    ARStreamAudioSampleRateType44100 = 44100,
+    /**
+     48 kHz
+     */
+    ARStreamAudioSampleRateType48000 = 48000
+};
+
+/**
+音频编码规格
+ */
+typedef NS_ENUM(NSInteger, ARStreamAudioCodecProfileType) {
+    /**
+     0：LC-AAC 规格，表示基本音频编码规格。
+     */
+    ARStreamAudioCodecProfileLCAAC = 0,
+    /**
+     1：HE-AAC 规格，表示高效音频编码规格。
+     */
+    ARStreamAudioCodecProfileHEAAC = 1
+};
+
+/** 加密模式 */
+typedef NS_ENUM(NSInteger, AREncryptionMode) {
+    /* OpenSSL Encryption Mode Start */
+    /** 1: （默认）128 位 AES 加密，XTS 模式。 */
+    AREncryptionModeAES128XTS = 1,
+    /** 2: 128 位 AES 加密，ECB 模式。 */
+    AREncryptionModeAES128ECB = 2,
+    /** 3: 256 位 AES 加密，XTS 模式。 */
+    AREncryptionModeAES256XTS = 3,
+    /* OpenSSL Encryption Mode End */
+
+    /** 4: 128 位 SM4 加密，ECB 模式。*/
+    AREncryptionModeSM4128ECB = 4,
+    /** 枚举值边界 */
+    AREncryptionModeEnd,
+};
+
+/** 语音音效均衡波段的中心频率 */
+typedef NS_ENUM(NSInteger, ARAudioEqualizationBandFrequency) {
+    /** 31 Hz. */
+    ARAudioEqualizationBand31 = 0,
+    /** 62 Hz. */
+    ARAudioEqualizationBand62 = 1,
+    /** 125 Hz. */
+    ARAudioEqualizationBand125 = 2,
+    /** 250 Hz. */
+    ARAudioEqualizationBand250 = 3,
+    /** 500 Hz */
+    ARAudioEqualizationBand500 = 4,
+    /** 1 kHz. */
+    ARAudioEqualizationBand1K = 5,
+    /** 2 kHz. */
+    ARAudioEqualizationBand2K = 6,
+    /** 4 kHz. */
+    ARAudioEqualizationBand4K = 7,
+    /** 8 kHz. */
+    ARAudioEqualizationBand8K = 8,
+    /** 16 kHz. */
+    ARAudioEqualizationBand16K = 9,
+};
+
+/** 音频混响类型 */
+typedef NS_ENUM(NSInteger, ARAudioReverbType) {
+    /** 原始音频强度，即所谓的 dry signal，取值范围 [-20,10]，单位为 dB */
+    ARAudioReverbDryLevel = 0,
+    /** 早期反射信号强度，即所谓的 wet signal，取值范围 [-20,10]，单位为 dB */
+    ARAudioReverbWetLevel = 1,
+    /** 所需混响效果的房间尺寸，一般房间越大，混响越强，取值范围 [0,100] */
+    ARAudioReverbRoomSize = 2,
+    /** wet signal 的初始延迟长度，取值范围 [0,200]，单位为 ms*/
+    ARAudioReverbWetDelay = 3,
+     /** 混响持续的强度，取值范围 [0,100] */
+    ARAudioReverbStrength = 4,
+};
+
+/** 本地语音变声、美音或语聊美声效果选项 */
+typedef NS_ENUM(NSInteger, ARAudioVoiceChanger) {
+    /** 原声，即关闭本地语音的变声、美音或语聊美声效果。*/
+    ARAudioVoiceChangerOff = 0x00000000,
+    /** 变声：老年男性 */
+    ARAudioVoiceChangerOldMan = 0x00000001,
+    /** 变声：小男孩 */
+    ARAudioVoiceChangerBabyBoy = 0x00000002,
+    /** 变声：小女孩 */
+    ARAudioVoiceChangerBabyGirl = 0x00000003,
+    /** 变声：猪八戒 */
+    ARAudioVoiceChangerZhuBaJie = 0x00000004,
+    /** 变声：空灵 */
+    ARAudioVoiceChangerEthereal = 0x00000005,
+    /** 变声：绿巨人 */
+    ARAudioVoiceChangerHulk = 0x00000006,
+    /** 美音：浑厚 */
+    ARAudioVoiceBeautyVigorous = 0x00100001,
+    /** 美音：低沉 */
+    ARAudioVoiceBeautyDeep = 0x00100002,
+    /** 美音：圆润 */
+    ARAudioVoiceBeautyMellow = 0x00100003,
+    /** 美音：假音 */
+    ARAudioVoiceBeautyFalsetto = 0x00100004,
+    /** 美音：饱满 */
+    ARAudioVoiceBeautyFull = 0x00100005,
+    /** 美音：清澈 */
+    ARAudioVoiceBeautyClear = 0x00100006,
+    /** 美音：高亢 */
+    ARAudioVoiceBeautyResounding = 0x00100007,
+    /** 美音：嘹亮 */
+    ARAudioVoiceBeautyRinging = 0x00100008,
+    /** 美音：空旷 */
+    ARAudioVoiceBeautySpacial = 0x00100009,
+    /** 语聊美声：磁性（男）。此枚举为男声定制化效果，不适用于女声。若女声使用此音效设置，则音频可能会产生失真。 */
+    ARAudioGeneralBeautyVoiceMaleMagnetic = 0x00200001,
+    /** 语聊美声：清新（女）。此枚举为女声定制化效果，不适用于男声。若男声使用此音效设置，则音频可能会产生失真。*/
+    ARAudioGeneralBeautyVoiceFemaleFresh = 0x00200002,
+    /** 语聊美声：活力（女）。此枚举为女声定制化效果，不适用于男声。若男声使用此音效设置，则音频可能会产生失真。 */
+    ARAudioGeneralBeautyVoiceFemaleVitality = 0x00200003,
+};
+
+/** 本地语音混响选项 */
+typedef NS_ENUM(NSInteger, ARAudioReverbPreset) {
+    /** 原声，即关闭本地语音混响。*/
+    ARAudioReverbPresetOff = 0x00000000,
+    /** KTV（增强版）  */
+    ARAudioReverbPresetFxKTV = 0x00100001,
+    /** 演唱会（增强版）*/
+    ARAudioReverbPresetFxVocalConcert = 0x00100002,
+    /** 大叔 */
+    ARAudioReverbPresetFxUncle = 0x00100003,
+    /** 小姐姐 */
+    ARAudioReverbPresetFxSister = 0x00100004,
+    /** 录音棚（增强版） */
+    ARAudioReverbPresetFxStudio = 0x00100005,
+    /** 流行（增强版） */
+    ARAudioReverbPresetFxPopular = 0x00100006,
+    /** R&B（增强版） */
+    ARAudioReverbPresetFxRNB = 0x00100007,
+    /** 留声机 */
+    ARAudioReverbPresetFxPhonograph = 0x00100008,
+    /** 流行 */
+    ARAudioReverbPresetPopular = 0x00000001,
+    /** R&B */
+    ARAudioReverbPresetRnB = 0x00000002,
+    /** 摇滚 */
+    ARAudioReverbPresetRock = 0x00000003,
+    /** 嘻哈 */
+    ARAudioReverbPresetHipHop = 0x00000004,
+    /** 演唱会  */
+    ARAudioReverbPresetVocalConcert = 0x00000005,
+    /** KTV */
+    ARAudioReverbPresetKTV = 0x00000006,
+    /** 录音棚 */
+    ARAudioReverbPresetStudio = 0x00000007,
+    /** 虚拟立体声。虚拟立体声是指将单声道的音轨渲染出立体声的效果，使频道内所有用户听到有空间感的声音效果。为达到更好的虚拟立体声效果，AR 推荐在调用该方法前将 setAudioProfile 的 profile 参数设置为 ARAudioProfileMusicHighQualityStereo(5)。*/
+    ARAudioReverbPresetVirtualStereo = 0x00200001
+};
 
 #endif /* AREnumerates_h */

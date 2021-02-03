@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63123C2925C84183002B396B /* ARtcKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63123C2725C84179002B396B /* ARtcKit.framework */; };
+		63123C2A25C84183002B396B /* ARtcKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63123C2725C84179002B396B /* ARtcKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6392419A25417658004C2340 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392419925417658004C2340 /* AppDelegate.swift */; };
 		6392419E25417658004C2340 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392419D25417658004C2340 /* ViewController.swift */; };
 		639241A325417659004C2340 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 639241A225417659004C2340 /* Assets.xcassets */; };
 		639241A625417659004C2340 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639241A425417659004C2340 /* LaunchScreen.storyboard */; };
 		639241B125417659004C2340 /* AR_Plugin_RawMediaData_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639241B025417659004C2340 /* AR_Plugin_RawMediaData_iOSTests.swift */; };
 		639241BC25417659004C2340 /* AR_Plugin_RawMediaData_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639241BB25417659004C2340 /* AR_Plugin_RawMediaData_iOSUITests.swift */; };
-		639241F525417D1C004C2340 /* ARtcKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639241F125417CFC004C2340 /* ARtcKit.framework */; };
-		639241F625417D1C004C2340 /* ARtcKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 639241F125417CFC004C2340 /* ARtcKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		639241FC2541822D004C2340 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 639241FB2541822C004C2340 /* Main.storyboard */; };
 		63924200254182BC004C2340 /* RawMediaDataMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639241FF254182BC004C2340 /* RawMediaDataMain.swift */; };
 		6392420625418425004C2340 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392420525418425004C2340 /* VideoView.swift */; };
@@ -51,7 +51,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				639241F625417D1C004C2340 /* ARtcKit.framework in Embed Frameworks */,
+				63123C2A25C84183002B396B /* ARtcKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,6 +59,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		63123C2725C84179002B396B /* ARtcKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARtcKit.framework; sourceTree = "<group>"; };
 		6392419625417658004C2340 /* AR-Plugin-RawMediaData-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AR-Plugin-RawMediaData-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6392419925417658004C2340 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6392419D25417658004C2340 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,7 +72,6 @@
 		639241B725417659004C2340 /* AR-Plugin-RawMediaData-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AR-Plugin-RawMediaData-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		639241BB25417659004C2340 /* AR_Plugin_RawMediaData_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AR_Plugin_RawMediaData_iOSUITests.swift; sourceTree = "<group>"; };
 		639241BD25417659004C2340 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		639241F125417CFC004C2340 /* ARtcKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARtcKit.framework; sourceTree = "<group>"; };
 		639241FB2541822C004C2340 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		639241FF254182BC004C2340 /* RawMediaDataMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RawMediaDataMain.swift; sourceTree = "<group>"; };
 		6392420525418425004C2340 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				639241F525417D1C004C2340 /* ARtcKit.framework in Frameworks */,
+				63123C2925C84183002B396B /* ARtcKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +137,7 @@
 		6392419825417658004C2340 /* AR-Plugin-RawMediaData-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				639241F125417CFC004C2340 /* ARtcKit.framework */,
+				63123C2725C84179002B396B /* ARtcKit.framework */,
 				6392419925417658004C2340 /* AppDelegate.swift */,
 				6392419D25417658004C2340 /* ViewController.swift */,
 				639241FF254182BC004C2340 /* RawMediaDataMain.swift */,

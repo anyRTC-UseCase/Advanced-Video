@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		631030F124EBC3ED001F50A8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 631030F024EBC3ED001F50A8 /* ViewController.m */; };
-		631030F424EBC6DE001F50A8 /* ARtcKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 631030F224EBC6D3001F50A8 /* ARtcKit.framework */; };
-		631030F524EBC6DE001F50A8 /* ARtcKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 631030F224EBC6D3001F50A8 /* ARtcKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		633F9E7C25CA82AB00BBF162 /* ARtcKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633F9E7A25CA829D00BBF162 /* ARtcKit.framework */; };
+		633F9E7D25CA82AB00BBF162 /* ARtcKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 633F9E7A25CA829D00BBF162 /* ARtcKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		633F9E7E25CA82B100BBF162 /* ARtcKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633F9E7725CA829200BBF162 /* ARtcKit.framework */; };
+		633F9E7F25CA82B100BBF162 /* ARtcKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 633F9E7725CA829200BBF162 /* ARtcKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		636863C624EAC18600BDCE95 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 636863C524EAC18600BDCE95 /* AppDelegate.m */; };
 		636863CF24EAC18600BDCE95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636863CD24EAC18600BDCE95 /* Main.storyboard */; };
 		636863D124EAC18700BDCE95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 636863D024EAC18700BDCE95 /* Assets.xcassets */; };
@@ -22,8 +23,6 @@
 		636863F524EAC1B200BDCE95 /* BroadcastSetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636863F424EAC1B200BDCE95 /* BroadcastSetupViewController.m */; };
 		636863F924EAC1B200BDCE95 /* AR-Screen-Sharing-iOS-BroadcastSetupUI.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 636863EE24EAC1B200BDCE95 /* AR-Screen-Sharing-iOS-BroadcastSetupUI.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		636863FC24EAC1B200BDCE95 /* AR-Screen-Sharing-iOS-Broadcast.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 636863E124EAC1B200BDCE95 /* AR-Screen-Sharing-iOS-Broadcast.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		6368640624EAC23C00BDCE95 /* ARtcKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6368640424EAC23000BDCE95 /* ARtcKit.framework */; };
-		6368640724EAC23C00BDCE95 /* ARtcKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6368640424EAC23000BDCE95 /* ARtcKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6368640B24EBA5FC00BDCE95 /* ARBroadcastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6368640A24EBA5FC00BDCE95 /* ARBroadcastViewController.m */; };
 		6368640E24EBA62B00BDCE95 /* ARAudienceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6368640D24EBA62B00BDCE95 /* ARAudienceViewController.m */; };
 /* End PBXBuildFile section */
@@ -52,7 +51,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				631030F524EBC6DE001F50A8 /* ARtcKit.framework in Embed Frameworks */,
+				633F9E7F25CA82B100BBF162 /* ARtcKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,7 +74,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6368640724EAC23C00BDCE95 /* ARtcKit.framework in Embed Frameworks */,
+				633F9E7D25CA82AB00BBF162 /* ARtcKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,9 +82,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		631030EF24EBC3ED001F50A8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		631030F024EBC3ED001F50A8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		631030F224EBC6D3001F50A8 /* ARtcKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARtcKit.framework; path = "AR-Screen-Sharing-iOS-Broadcast/ARtcKit.framework"; sourceTree = SOURCE_ROOT; };
+		633F9E7725CA829200BBF162 /* ARtcKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARtcKit.framework; sourceTree = "<group>"; };
+		633F9E7A25CA829D00BBF162 /* ARtcKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARtcKit.framework; sourceTree = "<group>"; };
 		636863C124EAC18600BDCE95 /* AR-Screen-Sharing-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AR-Screen-Sharing-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		636863C424EAC18600BDCE95 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		636863C524EAC18600BDCE95 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 		636863F324EAC1B200BDCE95 /* BroadcastSetupViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BroadcastSetupViewController.h; sourceTree = "<group>"; };
 		636863F424EAC1B200BDCE95 /* BroadcastSetupViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BroadcastSetupViewController.m; sourceTree = "<group>"; };
 		636863F624EAC1B200BDCE95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6368640424EAC23000BDCE95 /* ARtcKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARtcKit.framework; sourceTree = "<group>"; };
 		6368640924EBA5FC00BDCE95 /* ARBroadcastViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARBroadcastViewController.h; sourceTree = "<group>"; };
 		6368640A24EBA5FC00BDCE95 /* ARBroadcastViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARBroadcastViewController.m; sourceTree = "<group>"; };
 		6368640C24EBA62B00BDCE95 /* ARAudienceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARAudienceViewController.h; sourceTree = "<group>"; };
@@ -116,7 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				631030F424EBC6DE001F50A8 /* ARtcKit.framework in Frameworks */,
+				633F9E7E25CA82B100BBF162 /* ARtcKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,7 +122,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				636863E424EAC1B200BDCE95 /* ReplayKit.framework in Frameworks */,
-				6368640624EAC23C00BDCE95 /* ARtcKit.framework in Frameworks */,
+				633F9E7C25CA82AB00BBF162 /* ARtcKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,11 +162,9 @@
 		636863C324EAC18600BDCE95 /* AR-Screen-Sharing-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				631030F224EBC6D3001F50A8 /* ARtcKit.framework */,
+				633F9E7725CA829200BBF162 /* ARtcKit.framework */,
 				636863C424EAC18600BDCE95 /* AppDelegate.h */,
 				636863C524EAC18600BDCE95 /* AppDelegate.m */,
-				631030EF24EBC3ED001F50A8 /* ViewController.h */,
-				631030F024EBC3ED001F50A8 /* ViewController.m */,
 				6368640924EBA5FC00BDCE95 /* ARBroadcastViewController.h */,
 				6368640A24EBA5FC00BDCE95 /* ARBroadcastViewController.m */,
 				6368640C24EBA62B00BDCE95 /* ARAudienceViewController.h */,
@@ -195,7 +190,7 @@
 		636863E524EAC1B200BDCE95 /* AR-Screen-Sharing-iOS-Broadcast */ = {
 			isa = PBXGroup;
 			children = (
-				6368640424EAC23000BDCE95 /* ARtcKit.framework */,
+				633F9E7A25CA829D00BBF162 /* ARtcKit.framework */,
 				636863E624EAC1B200BDCE95 /* SampleHandler.h */,
 				636863E724EAC1B200BDCE95 /* SampleHandler.m */,
 				636863E924EAC1B200BDCE95 /* Info.plist */,
@@ -348,7 +343,6 @@
 				636863C624EAC18600BDCE95 /* AppDelegate.m in Sources */,
 				636863D724EAC18800BDCE95 /* main.m in Sources */,
 				6368640B24EBA5FC00BDCE95 /* ARBroadcastViewController.m in Sources */,
-				631030F124EBC3ED001F50A8 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,8 +516,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AR-Screen-Sharing-iOS-Broadcast",
+					"$(PROJECT_DIR)/AR-Screen-Sharing-iOS",
 				);
 				INFOPLIST_FILE = "AR-Screen-Sharing-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -543,8 +539,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/AR-Screen-Sharing-iOS-Broadcast",
+					"$(PROJECT_DIR)/AR-Screen-Sharing-iOS",
 				);
 				INFOPLIST_FILE = "AR-Screen-Sharing-iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -560,6 +558,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5543CP4MRT;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "AR-Screen-Sharing-iOS-BroadcastSetupUI/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -578,6 +577,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5543CP4MRT;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "AR-Screen-Sharing-iOS-BroadcastSetupUI/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

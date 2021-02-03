@@ -9,6 +9,11 @@
 #import "ARAudienceViewController.h"
 #import <ARtcKit/ARtcKit.h>
 
+/* AppID
+* anyRTC 为 App 开发者签发的 App ID。每个项目都应该有一个独一无二的 App ID。如果你的开发包里没有 App ID，请从anyRTC官网(https://www.anyrtc.io)申请一个新的 App ID
+*/
+static NSString *appID = <#T##NSString#>;
+
 @interface ARAudienceViewController ()<ARtcEngineDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *channelLabel;
@@ -22,18 +27,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.channelLabel.text = self.channelId;
+    self.channelLabel.text = @"808080";
+    [self initializeRtcKit];
 }
 
 - (void)initializeRtcKit {
     //实例化ARtcEngineKit对象
-    self.rtcKit = [ARtcEngineKit sharedEngineWithAppId:@"57f16e995cf36741e2ff2c97875a0944" delegate:self];
+    self.rtcKit = [ARtcEngineKit sharedEngineWithAppId:appID delegate:self];
     //开启视频模块
     [self.rtcKit enableVideo];
     //加入频道
-    [self.rtcKit joinChannelByToken:nil channelId:self.channelId uid:nil joinSuccess:^(NSString * _Nonnull channel, NSString * _Nonnull uid, NSInteger elapsed) {
+    [self.rtcKit joinChannelByToken:nil channelId:@"808080" uid:nil joinSuccess:^(NSString * _Nonnull channel, NSString * _Nonnull uid, NSInteger elapsed) {
         NSLog(@"joinSuccess");
     }];
+}
+
+- (IBAction)didClickCloseButton:(id)sender {
+    [self.rtcKit leaveChannel:nil];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 //MARK: - ARtcEngineDelegate
@@ -44,6 +55,7 @@
     canvas.uid = uid;
     canvas.view = self.view;
     canvas.channelId = self.channelId;
+    canvas.renderMode = ARVideoRenderModeFit;
     [self.rtcKit setupRemoteVideo:canvas];
 }
 

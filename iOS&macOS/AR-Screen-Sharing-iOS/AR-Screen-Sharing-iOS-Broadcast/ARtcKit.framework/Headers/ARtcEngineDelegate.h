@@ -230,6 +230,66 @@
  */
 - (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine localAudioStateChange:(ARAudioLocalState)state error:(ARAudioLocalError)error;
 
+/** 已显示远端视频首帧回调
+ 
+@param engine ARtcEngineKit 对象
+@param uid 远端用户 ID
+@param size 视频尺寸（宽和高）
+@param elapsed 从本地用户调用joinChannelByToken到发生此事件过去的时间（ms）。
+*/
+- (void)rtcEngine:(ARtcEngineKit *_Nonnull)engine firstRemoteVideoFrameOfUid:(NSString *_Nonnull)uid size:(CGSize)size elapsed:(NSInteger)elapsed;
+
+/** 音频发布状态改变回调
+
+ 本地音频的发布状态发生改变时，SDK会触发该回调报告当前的本地音频发布状态。
+ 
+ @param engine     ARtcEngineKit 对象
+ @param channel    频道名
+ @param oldState   之前的发布状态，详见 ARStreamPublishState 。
+ @param newState   当前的发布状态，详见 ARStreamPublishState 。
+ @param elapseSinceLastState 两次状态变化时间间隔（毫秒）。
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine didAudioPublishStateChange:(NSString *_Nonnull)channel oldState:(ARStreamPublishState)oldState newState:(ARStreamPublishState)newState elapseSinceLastState:(NSInteger)elapseSinceLastState;
+
+
+/** 视频发布状态改变回调
+
+ 本地视频的发布状态发生改变时，SDK会触发该回调报告当前的本地视频发布状态。
+
+ @param engine     ARtcEngineKit 对象
+ @param channel    频道名
+ @param oldState   之前的发布状态，详见 ARStreamPublishState 。
+ @param newState   当前的发布状态，详见 ARStreamPublishState 。
+ @param elapseSinceLastState 两次状态变化时间间隔（毫秒）。
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine didVideoPublishStateChange:(NSString *_Nonnull)channel oldState:(ARStreamPublishState)oldState newState:(ARStreamPublishState)newState elapseSinceLastState:(NSInteger)elapseSinceLastState;
+
+/** 音频订阅状态发生改变回调
+
+ 本地订阅远程音频的状态发生改变时，SDK会触发该回调报告当前订阅远程音频的状态。
+
+ @param engine    ARtcEngineKit 对象
+ @param channel   频道名
+ @param uid       远端用户的 ID
+ @param oldState 之前的订阅状态，详见 ARStreamSubscribeState 。
+ @param newState  当前的订阅状态，详见 ARStreamSubscribeState 。
+ @param elapseSinceLastState 两次状态变化时间间隔（毫秒）。
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine didAudioSubscribeStateChange:(NSString *_Nonnull)channel withUid:(NSString * _Nonnull)uid oldState:(ARStreamSubscribeState)oldState newState:(ARStreamSubscribeState)newState elapseSinceLastState:(NSInteger)elapseSinceLastState;
+
+/** 视频订阅状态发生改变回调
+
+ 本地订阅远程视频的状态发生改变时，SDK会触发该回调报告当前订阅远程视频的状态。
+
+ @param engine    ARtcEngineKit 对象
+ @param channel   频道名
+ @param uid       远端用户的 ID
+ @param oldState  之前的订阅状态，详见 ARStreamSubscribeState 。
+ @param newState  当前的订阅状态，详见 ARStreamSubscribeState 。
+ @param elapseSinceLastState 两次状态变化时间间隔（毫秒）。
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine didVideoSubscribeStateChange:(NSString *_Nonnull)channel withUid:(NSString * _Nonnull)uid oldState:(ARStreamSubscribeState)oldState newState:(ARStreamSubscribeState)newState elapseSinceLastState:(NSInteger)elapseSinceLastState;
+
 /** 本地或远端视频大小和旋转信息发生改变回调
 
  @param engine   ARtcEngineKit 对象
@@ -290,6 +350,17 @@
  */
 - (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine reportRtcStats:(ARChannelStats * _Nonnull)stats;
 
+/** 通话前网络上下行 last mile 质量报告回调
+
+ 该回调描述本地用户在加入频道前的 last mile 网络探测的结果，其中 last mile 是指设备到 边缘服务器的网络状态。
+
+ 在调用 enableLastmileTest 之后，该回调每 2 秒触发一次。
+
+ @param engine  ARtcEngineKit 对象。
+ @param quality 网络上下行质量，基于上下行网络的丢包率和抖动计算，探测结果主要反映上行网络的状态。详见 ARNetworkQuality。
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine lastmileQuality:(ARNetworkQuality)quality;
+
 /** 通话中每个用户的网络上下行 last mile 质量报告回调
 
  该回调描述每个用户在通话中的 last mile 网络状态，其中 last mile 是指设备到 ar云平台 边缘服务器的网络状态。
@@ -307,6 +378,15 @@
  @param rxQuality 该用户的下行网络质量。基于下行网络的丢包率、平均往返延时和网络抖动计算。详见 ARNetworkQuality。
  */
 - (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine networkQuality:(NSString * _Nonnull)uid txQuality:(ARNetworkQuality)txQuality rxQuality:(ARNetworkQuality)rxQuality;
+
+/** 通话前网络质量探测报告回调
+
+ 通话前网络上下行 last mile 质量探测报告回调。在调用 startLastmileProbeTest 之后，SDK 会在约 30 秒内返回该回调。
+
+ @param engine ARtcEngineKit 对象
+ @param result 上下行 last mile 质量探测结果，详见 ARLastmileProbeResult。
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine lastmileProbeTestResult:(ARLastmileProbeResult * _Nonnull)result;
 
 /** 本地视频流统计信息回调
 
@@ -342,6 +422,14 @@
 * -----------------------------------------------------------------------------
 */
 
+/** 本地音乐文件播放已结束回调
+
+本地用户调用 startAudioMixing 播放音乐文件音乐结束后，会触发该回调。如果调用 startAudioMixing 失败，会在 didOccurWarning 回调里，返回警告代码 ARWarningCodeAudioMixingOpenError。
+
+@param engine  ARtcEngineKit 对象。
+*/
+- (void)rtcEngineLocalAudioMixingDidFinish:(ARtcEngineKit *_Nonnull)engine;
+
 /** 本地音效文件播放已结束回调
 
  当调用 playEffect 播放音效结束后，会触发该回调。
@@ -351,21 +439,173 @@
  */
 - (void)rtcEngineDidAudioEffectFinish:(ARtcEngineKit * _Nonnull)engine soundId:(NSInteger)soundId;
 
-//MARK: - CDN Publisher Delegate Methods
+//MARK: - CDN 旁路推流事件回调
 
-//MARK: - Inject Stream URL Delegate Methods
+/**-----------------------------------------------------------------------------
+ * @name CDN 旁路推流事件回调
+ * -----------------------------------------------------------------------------
+ */
 
-//MARK: - Stream Message Delegate Methods
+/** RTMP 推流状态发生改变回调
+
+ 该回调返回本地用户调用 addPublishStreamUrl 或 removePublishStreamUrl 方法的结果。
+
+ RTMP 推流状态发生改变时，SDK 会触发该回调，并在回调中明确状态发生改变的 URL 地址及当前推流状态。
+
+ 该回调方便推流用户了解当前的推流状态；推流出错时，你可以通过返回的错误码了解出错的原因，方便排查问题。
+
+@param engine ARtcEngineKit 对象。
+@param url 推流状态发生改变的 URL 地址。
+@param state 当前的推流状态，详见 ARtmpStreamingState。当推流状态为 ARtmpStreamingStateFailure(4) 时，你可以在 errorCode 参数中查看返回的错误信息。
+@param errorCode 具体的推流错误信息，详见 ARtmpStreamingErrorCode。
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine rtmpStreamingChangedToState:(NSString * _Nonnull)url state:(ARtmpStreamingState)state errorCode:(ARtmpStreamingErrorCode)errorCode;
+
+/** RTMP 推流事件回调。
+
+ @param engine ARtcEngineKit 对象。
+ @param url RTMP 推流 URL。
+ @param eventCode RTMP 推流事件码。详见 ARtmpStreamingEvent 。
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine rtmpStreamingEventWithUrl:(NSString * _Nonnull)url eventCode:(ARtmpStreamingEvent)eventCode;
+
+/** 开启旁路推流的结果回调
+ 
+ 返回 addPublishStreamUrl 方法的调用结果。如果调用不成功，你可以在 errorCode 参数中查看详细的错误信息。
+
+ @param engine    ARtcEngineKit 对象
+ @param url       主播推流地址或输入的外部音视频流地址
+ @param errorCode 常见的错误码如下，详情见 ARErrorCode
+
+ - ARErrorCodeNoError(0)：推流成功
+ - ARErrorCodeFailed(1)：推流失败
+ - ARErrorCodeInvalidArgument(2)：参数错误，如果你在调用 addPublishStreamUrl 前没有调用 setLiveTranscoding 配置 ARLiveTranscoding ，会导致此错误。
+ - ARErrorCodeTimedOut(10)：推流超时未成功
+ - ARErrorCodeAlreadyInUse(19)：推流地址已经在推流
+ - ARErrorCodeAbort(20): SDK 与推流服务器断开连接，推流中断
+ - ARErrorCodeResourceLimited(22)：后台没有足够资源推流
+ - ARErrorCodeEncryptedStreamNotAllowedPublish(130)：推流已加密不能推流
+ - ARErrorCodePublishStreamCDNError(151)：CDN 相关错误。请调用 removePublishStreamUrl 方法删除原来的推流地址，然后调用 addPublishStreamUrl 方法重新推流到新地址。
+ - ARErrorCodePublishStreamNumReachLimit(152)：单个主播的推流地址数目达到上限 10。请删掉一些不用的推流地址再增加推流地址。
+ - ARErrorCodePublishStreamNotAuthorized(153)：操作不属于主播自己的流，例如更新其他主播的流参数、停止其他主播的流。请检查 App 逻辑。
+ - ARErrorCodePublishStreamInternalServerError(154)：推流服务器出现错误。请调用 addPublishStreamUrl 重新推流。
+ - ARErrorCodePublishStreamFormatNotSuppported(156)：推流地址格式有错误。请检查推流地址格式是否正确。
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine streamPublishedWithUrl:(NSString * _Nonnull)url errorCode:(ARErrorCode)errorCode;
+
+/** 停止旁路推流的结果回调
+
+ 返回 removePublishStreamUrl 方法的调用结果。
+
+ @param engine ARtcEngineKit object.
+ @param url    主播停止推流的 RTMP 地址
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine streamUnpublishedWithUrl:(NSString * _Nonnull)url;
+
+/** 旁路推流设置被更新回调
+
+ setLiveTranscoding 方法中的直播参数 LiveTranscoding rtcEngineTranscodingUpdated 回调会被触发并向主播报告更新信息。
+
+ **Note:**
+
+ 首次调用 setLiveTranscoding 方法设置转码参数 LiveTranscoding 时，不会触发此回调。
+
+ @param engine ARtcEngineKit 对象。
+ */
+- (void)rtcEngineTranscodingUpdated:(ARtcEngineKit * _Nonnull)engine;
+
+//MARK: - 直播输入在线媒体流事件回调
+/**-----------------------------------------------------------------------------
+* @name 直播输入在线媒体流事件回调
+* -----------------------------------------------------------------------------
+*/
+
+/** 输入外部视频流状态回调
+
+ @param engine  ARtcEngineKit 对象
+ @param url 输入进直播的外部视频源 URL 地址
+ @param uid 用户 ID
+ @param status 详见ARInjectStreamStatus
+ */
+- (void)rtcEngine:(ARtcEngineKit *_Nonnull)engine streamInjectedStatusOfUrl:(NSString *_Nonnull)url uid:(NSString * _Nonnull)uid status:(ARInjectStreamStatus)status;
+
+//MARK: - 数据流事件回调
+
+/**-----------------------------------------------------------------------------
+ * @name 数据流事件回调
+ * -----------------------------------------------------------------------------
+ */
+
+/** 接收到对方数据流消息的回调
+
+ 该回调表示本地用户收到了远端用户调用 sendStreamMessage 方法发送的流消息。
+
+ @param engine   ARtcEngineKit 对象
+ @param uid      用户ID
+ @param streamId 数据流 ID
+ @param data     接收到的数据
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine receiveStreamMessageFromUid:(NSString * _Nonnull)uid streamId:(NSInteger)streamId data:(NSData * _Nonnull)data;
+
+/** 接收对方数据流消息错误的回调
+
+ 该回调表示本地用户未收到远端用户调用 sendStreamMessage 方法发送的流消息。
+
+ @param engine   ARtcEngineKit 对象
+ @param uid      用户 ID
+ @param streamId 数据流 ID
+ @param error   错误代码: ARErrorCode
+ @param missed 丢失的消息数量
+ @param cached 数据流中断时，后面缓存的消息数量
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine didOccurStreamMessageErrorFromUid:(NSString * _Nonnull)uid streamId:(NSInteger)streamId error:(NSInteger)error missed:(NSInteger)missed cached:(NSInteger)cached;
 
 //MARK: - Miscellaneous Delegate Methods
 
-//MARK: - Fallback Delegate Methods
+//MARK: - 音视频流回退事件回调
+/**-----------------------------------------------------------------------------
+ * @name 本地发布流已回退为音频流
+ * -----------------------------------------------------------------------------
+ */
+
+ /** 远端订阅流已回退为音频流
+
+  如果你调用了 setRemoteSubscribeFallbackOption, 接口并将回退选项设置为 ARStreamFallbackOptionAudioOnly，当下行网络环境不理想、仅接收远端音频流时，或当下行网络改善、恢复订阅音视频流时，会触发该回调。
+
+ **Note:**
+
+  远端订阅流因弱网环境不能同时满足音视频而回退为小流时，你可以使用 remoteVideoStats 方法来监控远端视频大小流的切换。
+
+ @param engine              ARtcEngineKit 对象。
+ @param isFallbackOrRecover 回退为音频流或恢复为音视频流：
+
+ * YES: 由于网络环境不理想，远端订阅流已回退为音频流
+ * NO: 由于网络环境改善，订阅的音频流已恢复为音视频流
+ @param uid  远端用户ID
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine didRemoteSubscribeFallbackToAudioOnly:(BOOL)isFallbackOrRecover byUid:(NSString *_Nonnull)uid;
 
 //MARK: - 媒体设备事件回调
 /**-----------------------------------------------------------------------------
 * @name 媒体设备事件回调
 * -----------------------------------------------------------------------------
 */
+
+#if (!(TARGET_OS_IPHONE) && (TARGET_OS_MAC))
+
+/** 设备状态改变回调 (仅支持 macOS)
+
+ @param engine     ARtcEngineKit 对象
+ @param deviceId   设备ID
+ @param deviceType 设备类型，详见 ARMediaDeviceType
+ @param state      设备的状态：
+ - 0: 已添加。
+ - 1: 删除。
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine device:(NSString * _Nonnull)deviceId type:(ARMediaDeviceType)deviceType stateChanged:(NSInteger) state;
+
+#endif
+
 /** 语音路由已发生变化回调
 
 当语音路由发生变化时，SDK 会触发此回调。
@@ -375,25 +615,60 @@
  */
 - (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine didAudioRouteChanged:(ARAudioOutputRouting)routing;
 
+#if defined (TARGET_OS_IPHONE) && TARGET_OS_IPHONE
+
+/** 报告本地人脸检测结果。
+ 
+ 调用 enableFaceDetection(YES) 开启本地人脸检测后，你可以通过该回调实时获取以下人脸检测的信息：
+ 
+ - 摄像头采集的画面大小
+ - 人脸在画面中的位置
+ - 人脸距设备屏幕的距离，该值由 SDK 通过摄像头采集的画面大小和人脸在画面中的位置拟合计算得出。
+ 
+**Note**
+ 
+ - 当检测到摄像头前没有人脸时，该回调触发频率会降低，以节省设备耗能。
+ - 当人脸距离设备屏幕过近时，SDK 不会触发该回调。
+ 
+ @param engine ARtcEngineKit 对象。
+ @param width 摄像头采集画面的宽度 (px)。
+ @param height 摄像头采集画面的高度 (px)。
+ @param faces 检测到的人脸信息，详见 ARFacePositionInfo 。
+ 
+ 检测到几张人脸，就会报告几个 ARFacePositionInfo 数组。数组长度可以为 0，表示没有检测到摄像头前出现人脸。
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine facePositionDidChangeWidth:(int)width previewHeight:(int)height faces:(NSArray<ARFacePositionInfo *> *_Nullable)faces;
+
+#endif
+
+//MARK: - 跨频道媒体流转发回调
+
+/**-----------------------------------------------------------------------------
+* @name 跨频道媒体流转发回调
+* -----------------------------------------------------------------------------
+*/
+/** 跨频道媒体流转发状态发生改变回调。
+
+ 当跨频道媒体流转发状态发生改变时，SDK 会触发该回调，并报告当前的转发状态以及相关的错误信息。
+ 
+ @param engine ARtcEngineKit 对象
+ @param state 跨频道媒体流转发状态 ARChannelMediaRelayState。
+ @param error 跨频道媒体流转发出错的错误码 ARChannelMediaRelayError。
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine channelMediaRelayStateDidChange:(ARChannelMediaRelayState)state error:(ARChannelMediaRelayError)error;
+
+/** 跨频道媒体流转发事件回调。
+ 
+ @param engine ARtcEngineKit 对象
+ @param event 跨频道媒体流转发事件码
+ */
+- (void)rtcEngine:(ARtcEngineKit * _Nonnull)engine didReceiveChannelMediaRelayEvent:(ARChannelMediaRelayEvent)event;
+
 //MARK: - 其它回调方法(不推荐使用)
 /**-----------------------------------------------------------------------------
 * @name 其它回调方法
 * -----------------------------------------------------------------------------
 */
-
-/** 已显示远端视频首帧回调
- 
-**Note**
- 
-推荐使用remoteVideoStateChangedOfUid回调。
- 
-@param engine ARtcEngineKit 对象
-@param uid 远端用户 ID
-@param size 视频尺寸（宽和高）
-@param elapsed 从本地用户调用joinChannelByToken到发生此事件过去的时间（ms）。
-*/
-- (void)rtcEngine:(ARtcEngineKit *_Nonnull)engine firstRemoteVideoFrameOfUid:(NSString *_Nonnull)uid size:(CGSize)size elapsed:(NSInteger)elapsed;
-
 /** 已完成远端视频首帧解码回调
  
 **Note**
