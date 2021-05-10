@@ -43,8 +43,8 @@ static NSString *appId = <#T##NSString#>;
 - (void)processSampleBuffer:(CMSampleBufferRef)sampleBuffer withType:(RPSampleBufferType)sampleBufferType {
     switch (sampleBufferType) {
         case RPSampleBufferTypeVideo:
-            // 处理视频数据
         {
+            // 处理视频数据
             CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
             if (pixelBuffer) {
                 CMTime timestamp = CMSampleBufferGetPresentationTimeStamp(sampleBuffer);
@@ -58,10 +58,12 @@ static NSString *appId = <#T##NSString#>;
         }
             break;
         case RPSampleBufferTypeAudioApp:
+            
             // 处理音频数据，音频由App产生
             [rtcKit pushExternalAudioFrameSampleBuffer:sampleBuffer type:ARAudioTypeApp];
             break;
         case RPSampleBufferTypeAudioMic:
+            
             // 处理音频数据，音频由麦克风产生
             [rtcKit pushExternalAudioFrameSampleBuffer:sampleBuffer type:ARAudioTypeMic];
             break;
@@ -73,43 +75,49 @@ static NSString *appId = <#T##NSString#>;
 //MARK : - RTMeetEngine
 
 - (void)initializationRtcEnginKit{
-    //实例化一个ARtcEngineKit对象
+    
+    // 实例化 rtc 对象
     rtcKit = [ARtcEngineKit sharedEngineWithAppId:appId delegate:self];
-    [rtcKit setChannelProfile:ARChannelProfileiveBroadcasting];
+    [rtcKit setChannelProfile:ARChannelProfileLiveBroadcasting];
     [rtcKit setClientRole:ARClientRoleBroadcaster];
-    //开启视频模块
     [rtcKit enableVideo];
-    [rtcKit enableLocalAudio:NO];
-    //配置外部视频源
-    [rtcKit setExternalVideoSource:YES useTexture:YES pushMode:YES];
-    //视频编码配置
+    
+    // 视频编码配置
     ARVideoEncoderConfiguration *config = [[ARVideoEncoderConfiguration alloc] init];
     config.dimensions = CGSizeMake(540, 960);
     config.bitrate = 1000;
     config.frameRate = 24;
     config.orientationMode = ARVideoOutputOrientationModeAdaptative;
     [rtcKit setVideoEncoderConfiguration:config];
-    //设置音频编码配置
-    [rtcKit setAudioProfile:ARAudioProfileMusicStandard scenario:ARAudioScenarioDefault];
-    //音频自采集
+    
+    // 配置外部视频源
+    [rtcKit setExternalVideoSource:YES useTexture:YES pushMode:YES];
+    
+    // 推送外部音频帧
     [rtcKit enableExternalAudioSourceWithSampleRate:48000 channelsPerFrame:2];
-    //禁止接收所有音视频流
+    
+    // 禁止接收所有音视频流
     [rtcKit muteAllRemoteVideoStreams:YES];
     [rtcKit muteAllRemoteAudioStreams:YES];
     
-    [rtcKit joinChannelByToken:nil channelId:@"808080" uid:nil joinSuccess:^(NSString * _Nonnull channel, NSString * _Nonnull uid, NSInteger elapsed) {
+    // 加入频道
+    [rtcKit joinChannelByToken:nil channelId:@"909090" uid:nil joinSuccess:^(NSString * _Nonnull channel, NSString * _Nonnull uid, NSInteger elapsed) {
         NSLog(@"joinSuccess");
     }];
+    
+    // 开始播放音乐文件
+    NSString *filePath = [[NSBundle mainBundle]pathForResource:@"gangqin" ofType:@"mp3"];
+    [rtcKit startAudioMixing:filePath loopback:NO replace:NO cycle:0];
 }
 
 //MARK: - ARtcEngineDelegate
 
-- (void)rtcEngine:(ARtcEngineKit *_Nonnull)engine didJoinedOfUid:(NSString *_Nonnull)uid elapsed:(NSInteger)elapsed {
-    
+- (void)rtcEngine:(ARtcEngineKit *)engine didOccurWarning:(ARWarningCode)warningCode {
+    // 发生警告回调
 }
 
-- (void)rtcEngine:(ARtcEngineKit *_Nonnull)engine didOfflineOfUid:(NSString *_Nonnull)uid reason:(ARUserOfflineReason)reason {
-    
+- (void)rtcEngine:(ARtcEngineKit *)engine didOccurError:(ARErrorCode)errorCode {
+    // 发生错误回调
 }
 
 //MARK: - other

@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		63123C2925C84183002B396B /* ARtcKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63123C2725C84179002B396B /* ARtcKit.framework */; };
-		63123C2A25C84183002B396B /* ARtcKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63123C2725C84179002B396B /* ARtcKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6392419A25417658004C2340 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392419925417658004C2340 /* AppDelegate.swift */; };
 		6392419E25417658004C2340 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6392419D25417658004C2340 /* ViewController.swift */; };
 		639241A325417659004C2340 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 639241A225417659004C2340 /* Assets.xcassets */; };
@@ -25,6 +23,8 @@
 		6392422925418D1A004C2340 /* ARVideoRawData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6392422825418D1A004C2340 /* ARVideoRawData.m */; };
 		639242312541A65E004C2340 /* ARBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639242302541A65E004C2340 /* ARBaseViewController.swift */; };
 		639242352541A6C3004C2340 /* ARLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639242342541A6C3004C2340 /* ARLogViewController.swift */; };
+		63B35D7A260DDFCE0059019C /* ARtcKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63B35D78260DDFC90059019C /* ARtcKit.framework */; };
+		63B35D7B260DDFCE0059019C /* ARtcKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 63B35D78260DDFC90059019C /* ARtcKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +51,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				63123C2A25C84183002B396B /* ARtcKit.framework in Embed Frameworks */,
+				63B35D7B260DDFCE0059019C /* ARtcKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,7 +59,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		63123C2725C84179002B396B /* ARtcKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARtcKit.framework; sourceTree = "<group>"; };
 		6392419625417658004C2340 /* AR-Plugin-RawMediaData-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AR-Plugin-RawMediaData-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6392419925417658004C2340 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6392419D25417658004C2340 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +84,7 @@
 		6392422825418D1A004C2340 /* ARVideoRawData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ARVideoRawData.m; sourceTree = "<group>"; };
 		639242302541A65E004C2340 /* ARBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARBaseViewController.swift; sourceTree = "<group>"; };
 		639242342541A6C3004C2340 /* ARLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARLogViewController.swift; sourceTree = "<group>"; };
+		63B35D78260DDFC90059019C /* ARtcKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ARtcKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63123C2925C84183002B396B /* ARtcKit.framework in Frameworks */,
+				63B35D7A260DDFCE0059019C /* ARtcKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +137,7 @@
 		6392419825417658004C2340 /* AR-Plugin-RawMediaData-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				63123C2725C84179002B396B /* ARtcKit.framework */,
+				63B35D78260DDFC90059019C /* ARtcKit.framework */,
 				6392419925417658004C2340 /* AppDelegate.swift */,
 				6392419D25417658004C2340 /* ViewController.swift */,
 				639241FF254182BC004C2340 /* RawMediaDataMain.swift */,
